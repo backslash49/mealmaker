@@ -1,15 +1,15 @@
 import re
 import sys
 
-f = open('/users/lauren/downloads/Kids.mmf')
+f = open('/users/lauren/downloads/recipes.txt')
 
 #recipes = re.findall(r'Title:\s*(.*)\r', f.read())
 
-things = '\d*\s*(.*)\r'
+items = '\s.*'
 
 #ingredients = re.findall(r'MOLASSES'+'\r\n \r\n', f.read())
 
-ingredients = re.findall('Servings:\s*\d*\r\n\s\r\n\s*'+'\s'+'[^\r\n\r\n]*', f.read())
+ingredients = re.findall('Servings:\s*\d*\r\n\s\r\n\s*'+items+items+items+items+items+items+items+items+items+items+items+items, f.read())
 
 
 #ingredients = re.findall('Servings:\s*'+ things, f.read())
