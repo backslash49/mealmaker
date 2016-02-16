@@ -2,7 +2,7 @@
 import json, requests, pprint, urllib, urllib2, re, sys
 
 #command line input
-search = input('What are you searching for?')
+search = input('What are you searching for today?')
 
 #api url for SEARCHING
 urlsearch = "http://food2fork.com/api/search"
