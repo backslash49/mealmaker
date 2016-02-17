@@ -1,39 +1,33 @@
-
 import json, requests, pprint, urllib, urllib2, re, sys
 
 #command line input
-search = input('What are you searching for today?')
 
-#api url for SEARCHING
-urlsearch = "http://food2fork.com/api/search"
-urlget = "http://food2fork.com/api/get"
-
-#create payload of parammaters for API get request
-params = {'key': '635133a811791ce4b3b05c7d0a6121a8', 'q': search}
-
-#call API
-data = requests.get(url=urlsearch, params=params)
-
-#create dictionary of results in JSON format
-dict = json.loads(data.content)
-
-#create variable for length of results
-lenresults = len(dict['recipes'])
-
-#create count variable
-count = 1
-
-#run while loop on results to return titles
-while (count < lenresults):
-    print count, (dict['recipes'][count]['title'])
-    print dict['recipes'][count]['f2f_url']
-    count = count + 1
-
-#print number of results
-print len(dict['recipes'])
+def searchrecipes():
+    search = input('What are you searching for today?')
+    #api url for SEARCHING
+    urlsearch = "http://food2fork.com/api/search"
+    #create payload of parammaters for API get request
+    params = {'key': '635133a811791ce4b3b05c7d0a6121a8', 'q': search}
+    #call API
+    data = requests.get(url=urlsearch, params=params)
+    #create dictionary of results in JSON format
+    dict = json.loads(data.content)
+    #create variable for length of results
+    lenresults = len(dict['recipes'])
+    #create count variable
+    count = 1
+    #run while loop on results to return titles
+    search_results = {}
+    while (count < lenresults):
+        title = json.dumps(dict['recipes'][count]['title'])
+        website = json.dumps(dict['recipes'][count]['f2f_url'])
+        search_results[count] = (title, website)
+        count = count + 1
+    print search_results
+    return search_results
 
 def getingredients(selection):
-    selection = selection
+    urlget = "http://food2fork.com/api/get"
     paramsget = {'key': '635133a811791ce4b3b05c7d0a6121a8', 'rId': selection}
     datarecipe = requests.get(url=urlget, params=paramsget)
     dictrecipe = json.loads(datarecipe.content)
@@ -68,17 +62,21 @@ def removestuff(ingredients):
     ing = ing.replace('pound', '')
     ing = ing.replace('to taste', '')
     ing = ing.replace('ounces', '')
+    ing = ing.replace(' ounce', '')
     ing = ing.replace('quart', '')
     ing = ing.replace('bag', '')
     ing = ing.replace('Halved', '')
     ing = ing.replace('Tablespoon', '')
     ing = ing.replace('Tablespoons', '')
+    ing = ing.replace('[', '')
+    ing = ing.replace(']', '')
+    ing = ing.replace('"', '')
     ing = ing.replace('  ', '')
     split = ing.split('", "')
     return split
 
 #46980
-def returnrecipeandingredients(x):
+def get_title_strip_ingredients(x):
     a = getingredients(x)
     title = a[0]
     onlyingredients = removestuff(a[1])
@@ -90,11 +88,12 @@ def returnrecipeandingredients(x):
     return title, ingredientlist
     #create dict item for recipe and ingredients
 
-def get(x):
-    returnrecipeandingredients(x)
-    recipes = {}
-    recipes[title] = ingredientlist
-    return recipes
+def main():
+    listofrecipes = searchrecipes()
+    pprint.pprint(listofrecipes)
+    sel = input('Which Recipe')
+    a = get_title_strip_ingredients(sel)
+    return a
 
 
 #a = re.findall('http[^\']*', address)
