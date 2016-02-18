@@ -1,4 +1,5 @@
 import json, requests, pprint, urllib, urllib2, re, sys
+import save
 
 #command line input
 
@@ -20,10 +21,11 @@ def searchrecipes():
     search_results = {}
     while (count < lenresults):
         title = json.dumps(dict['recipes'][count]['title'])
+        title = title.replace('"', '')
         website = json.dumps(dict['recipes'][count]['f2f_url'])
-        search_results[count] = (title, website)
+        webID = re.findall('view/([^"]*)', website)
+        search_results[count] = (title, webID)
         count = count + 1
-    print search_results
     return search_results
 
 def getingredients(selection):
@@ -40,7 +42,11 @@ def removestuff(ingredients):
     ing = json.dumps(ingredients)
     ing = ing.replace('teaspoons', '')
     ing = ing.replace('teaspoon', '')
+    ing = ing.replace('5g', '')
+    ing = ing.replace('0g', '')
     ing = ing.replace('1/2', '')
+    ing = ing.replace('0', '')
+    ing = ing.replace('00', '')
     ing = ing.replace('1', '')
     ing = ing.replace('2', '')
     ing = ing.replace('3', '')
@@ -49,6 +55,7 @@ def removestuff(ingredients):
     ing = ing.replace('6', '')
     ing = ing.replace('7', '')
     ing = ing.replace('8', '')
+    ing = ing.replace('9', '')
     ing = ing.replace('small', '')
     ing = ing.replace('slices', '')
     ing = ing.replace('cp', '')
@@ -57,12 +64,23 @@ def removestuff(ingredients):
     ing = ing.replace('cup', '')
     ing = ing.replace('tablespoons', '')
     ing = ing.replace('tablespoon', '')
+    ing = ing.replace('Tbsp', '')
+    ing = ing.replace('Tsp', '')
+    ing = ing.replace('tbsp', '')
+    ing = ing.replace('tsp', '')
+    ing = ing.replace('0g', '')
+    ing = ing.replace('00g', '')
+    ing = ing.replace('&nbsp', '')
     ing = ing.replace('\\n', '')
     ing = ing.replace('/', '')
     ing = ing.replace('pound', '')
     ing = ing.replace('to taste', '')
     ing = ing.replace('ounces', '')
     ing = ing.replace(' ounce', '')
+    ing = ing.replace(' oz', '')
+    ing = ing.replace(' ml', '')
+    ing = ing.replace('can', '')
+
     ing = ing.replace('quart', '')
     ing = ing.replace('bag', '')
     ing = ing.replace('Halved', '')
@@ -71,29 +89,40 @@ def removestuff(ingredients):
     ing = ing.replace('[', '')
     ing = ing.replace(']', '')
     ing = ing.replace('"', '')
+    ing = ing.replace(', softened', '')
     ing = ing.replace('  ', '')
+    ing = ing.replace('()', '')
+
     split = ing.split('", "')
+
     return split
 
 #46980
 def get_title_strip_ingredients(x):
-    a = getingredients(x)
-    title = a[0]
-    onlyingredients = removestuff(a[1])
-    #strip starting and ending spaces
-    ingredientlist = []
-    for items in onlyingredients:
-        a = items.strip()
-        ingredientlist.append(a)
-    return title, ingredientlist
+    a = getingredients(x) #get raw ingredients
+    title = a[0]  #save title
+    onlyingredients = removestuff(a[1]) #remove crap from ingredients
+    string = str(onlyingredients)
+    string = string.split(',')
+    ingredientlist = []  #create blank list to add ingredients after cleaning
+    for items in string: #run for loop to...
+        a = items.strip()      #strip starting and ending spaces
+        ingredientlist.append(a)  #append cleaned items to ingriedentlist
+    titleandingredients = {}
+    titleandingredients[title] = ingredientlist
+    return titleandingredients
     #create dict item for recipe and ingredients
 
 def main():
     listofrecipes = searchrecipes()
     pprint.pprint(listofrecipes)
-    sel = input('Which Recipe')
-    a = get_title_strip_ingredients(sel)
+    choice = input('Which Recipe')
+    selection = listofrecipes[choice][1]
+    a = get_title_strip_ingredients(selection)
     return a
+    #asktosave = input('Save to Memory? )
+    #if asktosave == 'yes'
+    #    save.memory()
 
 
 #a = re.findall('http[^\']*', address)
