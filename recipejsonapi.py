@@ -80,21 +80,37 @@ def removestuff(ingredients):
     ing = ing.replace(' oz', '')
     ing = ing.replace(' ml', '')
     ing = ing.replace('can', '')
-
+    ing = ing.replace('melted', '')
     ing = ing.replace('quart', '')
     ing = ing.replace('bag', '')
     ing = ing.replace('Halved', '')
     ing = ing.replace('Tablespoon', '')
     ing = ing.replace('Tablespoons', '')
+    ing = ing.replace('for garnish (optional)', '')
     ing = ing.replace('[', '')
     ing = ing.replace(']', '')
     ing = ing.replace('"', '')
     ing = ing.replace(', softened', '')
+    ing = ing.replace('shreaded', '')
+    ing = ing.replace('sliced', '')
+    ing = ing.replace('drained', '')
+    ing = ing.replace('whole wheat', '')
+    ing = ing.replace('thinly', '')
+    ing = ing.replace('chopped', '')
+    ing = ing.replace('blanched', '')
+    ing = ing.replace('cooked', '')
+    ing = ing.replace('tolb', '')
+    ing = ing.replace('cut into thin strips', '')
+    ing = ing.replace('&amp', '')
+    ing = ing.replace('pinch', '')
+    ing = ing.replace('plain', '')
+    ing = ing.replace('ml', '')
+    ing = ing.replace('-', '')
+    ing = ing.replace('minced', '')
+    ing = ing.replace('plus extra for frying', '')
     ing = ing.replace('  ', '')
     ing = ing.replace('()', '')
-
     split = ing.split('", "')
-
     return split
 
 #46980
@@ -103,23 +119,30 @@ def get_title_strip_ingredients(x):
     title = a[0]  #save title
     onlyingredients = removestuff(a[1]) #remove crap from ingredients
     string = str(onlyingredients)
+    string = string.replace(']', '')
+    string = string.replace('[', '')
+    string = string.replace("'", '')
     string = string.split(',')
     ingredientlist = []  #create blank list to add ingredients after cleaning
     for items in string: #run for loop to...
-        a = items.strip()      #strip starting and ending spaces
-        ingredientlist.append(a)  #append cleaned items to ingriedentlist
-    titleandingredients = {}
-    titleandingredients[title] = ingredientlist
-    return titleandingredients
-    #create dict item for recipe and ingredients
+        if items != ' ':
+            if items != '':
+                a = items.strip()      #strip starting and ending spaces
+                ingredientlist.append(a)  #append cleaned items to ingriedentlist
+    titleandingredients = {}    #creates blank dict for title and ing.
+    titleandingredients[title] = ingredientlist #adds title and ingred. to dict
+    return titleandingredients      #returns title and list of ingredients
 
 def main():
     listofrecipes = searchrecipes()
     pprint.pprint(listofrecipes)
     choice = input('Which Recipe')
     selection = listofrecipes[choice][1]
-    a = get_title_strip_ingredients(selection)
-    return a
+    newrecipe = get_title_strip_ingredients(selection)
+    pprint.pprint(newrecipe)
+    yesorno = input('Want to add this to your recipe book?')
+    if yesorno == 'yes':
+        save.memory(newrecipe.keys()[0], newrecipe[newrecipe.keys()[0]])
     #asktosave = input('Save to Memory? )
     #if asktosave == 'yes'
     #    save.memory()
