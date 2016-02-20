@@ -17,51 +17,108 @@ p8
 S'Tomatoe'
 p9
 tp10
-sS'Easy Sugar Cookies'
+sS'Taco Seasoning I'
 p11
 (lp12
-S'allpurpose flour'
-p13
-aS'baking soda'
-p14
-aS'baking powder'
-p15
-aS'butter'
-p16
-aS'white sugar'
-p17
-aS'egg'
-p18
-aS'vanilla extract'
-p19
-asS'PB&J'
-p20
-(S'peanut-butter'
-p21
-S'jelly'
-p22
-S'bread'
-p23
-tp24
-sS'Taco Seasoning I'
-p25
-(lp26
 S'chili powder'
-p27
+p13
 aS'garlic powder'
-p28
+p14
 aS'onion powder'
-p29
+p15
 aS'crushed red pepper flakes'
-p30
+p16
 aS'dried oregano'
-p31
+p17
 aS'paprika'
-p32
+p18
 aS'ground cumin'
-p33
+p19
 aS'sea salt'
-p34
+p20
 aS'black pepper'
+p21
+asS'Cajun Chicken Pasta'
+p22
+(lp23
+S'boneless'
+p24
+aS'skinless chicken breasts'
+p25
+aS'cut into cubes'
+p26
+aS'cajun spice mix'
+p27
+aS'more to taste'
+p28
+aS'fettuccine'
+p29
+aS'olive oil'
+p30
+aS's butter'
+p31
+aS'green bell pepper'
+p32
+aS'seeded and sliced'
+p33
+aS'red bell pepper'
+p34
+aS'seeded and sliced'
 p35
+aS'large red onion'
+p36
+aS'sliced'
+p37
+aS'cloves garlic'
+p38
+aS'minced'
+p39
+aS'roma tomatoes'
+p40
+aS'diced'
+p41
+aS'low sodium chicken broth'
+p42
+aS'white wine'
+p43
+aS'heavy cream'
+p44
+aS'cayenne pepper to taste'
+p45
+aS'freshly ground black pepper'
+p46
+aS'to taste'
+p47
+aS'salt to taste'
+p48
+aS'chopped fresh parsley'
+p49
+aS'to taste'
+p50
+asS'PB&J'
+p51
+(S'peanut-butter'
+p52
+S'jelly'
+p53
+S'bread'
+p54
+tp55
+sS'Easy Sugar Cookies'
+p56
+(lp57
+S'allpurpose flour'
+p58
+aS'baking soda'
+p59
+aS'baking powder'
+p60
+aS'butter'
+p61
+aS'white sugar'
+p62
+aS'egg'
+p63
+aS'vanilla extract'
+p64
 as.

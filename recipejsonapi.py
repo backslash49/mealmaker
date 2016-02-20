@@ -24,7 +24,7 @@ def searchrecipes():
         title = title.replace('"', '')
         website = json.dumps(dict['recipes'][count]['f2f_url'])
         webID = re.findall('view/([^"]*)', website)
-        search_results[count] = (title, webID)
+        search_results[title] = (webID)
         count = count + 1
     return search_results
 
@@ -64,8 +64,10 @@ def removestuff(ingredients):
     ing = ing.replace('cup', '')
     ing = ing.replace('tablespoons', '')
     ing = ing.replace('tablespoon', '')
-    ing = ing.replace('Tbsp', '')
-    ing = ing.replace('Tsp', '')
+    ing = ing.replace('Tbsps', '')
+    ing = ing.replace('Tsps', '')
+    ing = ing.replace('tbsps', '')
+    ing = ing.replace('tsp', '')
     ing = ing.replace('tbsp', '')
     ing = ing.replace('tsp', '')
     ing = ing.replace('0g', '')
@@ -81,6 +83,7 @@ def removestuff(ingredients):
     ing = ing.replace(' ml', '')
     ing = ing.replace('can', '')
     ing = ing.replace('melted', '')
+    ing = ing.replace('thawed', '')
     ing = ing.replace('quart', '')
     ing = ing.replace('bag', '')
     ing = ing.replace('Halved', '')
@@ -108,6 +111,17 @@ def removestuff(ingredients):
     ing = ing.replace('-', '')
     ing = ing.replace('minced', '')
     ing = ing.replace('plus extra for frying', '')
+    ing = ing.replace('package', '')
+    ing = ing.replace('each', '')
+    ing = ing.replace('cut into', '')
+    ing = ing.replace('large', '')
+    ing = ing.replace('about', '')
+    ing = ing.replace('stick', '')
+    ing = ing.replace('divided', '')
+    ing = ing.replace('whole', '')
+    ing = ing.replace('at room temperature', '')
+    ing = ing.replace('grams', '')
+    ing = ing.replace('skinless', '')
     ing = ing.replace('  ', '')
     ing = ing.replace('()', '')
     split = ing.split('", "')
@@ -129,19 +143,66 @@ def get_title_strip_ingredients(x):
             if items != '':
                 a = items.strip()      #strip starting and ending spaces
                 ingredientlist.append(a)  #append cleaned items to ingriedentlist
+    lowercaseingredients = []
+    for items in ingredientlist:
+        lowercaseingredients.append(items.lower())
     titleandingredients = {}    #creates blank dict for title and ing.
-    titleandingredients[title] = ingredientlist #adds title and ingred. to dict
+    titleandingredients[title] = lowercaseingredients #adds title and ingred. to dict
     return titleandingredients      #returns title and list of ingredients
 
 def main():
     listofrecipes = searchrecipes()
-    pprint.pprint(listofrecipes)
+    returnedlist = {}
+    count = 1
+    for items in listofrecipes.keys():
+        print count, items
+        returnedlist[count] = (items, listofrecipes[items])
+        count = count+1
     choice = input('Which Recipe')
-    selection = listofrecipes[choice][1]
+    selection = returnedlist[choice][1]
     newrecipe = get_title_strip_ingredients(selection)
-    pprint.pprint(newrecipe)
-    yesorno = input('Want to add this to your recipe book?')
-    if yesorno == 'yes':
+    print 'Title:  ', newrecipe.keys()[0]
+    print 'Ingredients:  ',
+    count = 1
+    for items in newrecipe[newrecipe.keys()[0]]:
+        print count, items
+        count = count + 1
+    yesorno1 = input('Want to make any corrections? ')
+    if yesorno1 == 'yes':
+        yesno2 = input('Edit or Delete? ')
+        if yesno2 == 'Delete':
+            deletingitem = input('Which Item do you want to Delete? ')
+            deletingitem = deletingitem - 1
+            print 'Ok, deleting the following item: '
+            print newrecipe[newrecipe.keys()[0]][deletingitem]
+            checkb4delete = input('Are you sure you want to delete that? ')
+            if checkb4delete == 'yes':
+                newrecipe[newrecipe.keys()[0]].pop(deletingitem)
+            #correctingitem = input('Which Ingredient? ')
+        count = 1
+        for items in newrecipe[newrecipe.keys()[0]]:
+            print count, items
+            count = count + 1
+        if yesno2 == 'Edit':
+            editingitem = input('Which Item do you want to Edit? ')
+            editingitem = editingitem - 1
+            print 'Ok, editing the following item: '
+            print newrecipe[newrecipe.keys()[0]][editingitem]
+            editeditem = input('What are you changing the item to? ')
+            print 'Ok, editing from "', newrecipe[newrecipe.keys()[0]][editingitem], '" to "', editeditem, '"'
+            checkb4edit = input('Are you sure you want to change this? ')
+            if checkb4edit == 'yes':
+                newrecipe[newrecipe.keys()[0]][editingitem] = editeditem
+            #correctingitem = input('Which Ingredient? ')
+        count = 1
+        for items in newrecipe[newrecipe.keys()[0]]:
+            print count, items
+            count = count + 1
+
+        ##
+
+    yesorno2 = input('Want to add this to your recipe book?')
+    if yesorno2 == 'yes':
         save.memory(newrecipe.keys()[0], newrecipe[newrecipe.keys()[0]])
     #asktosave = input('Save to Memory? )
     #if asktosave == 'yes'
