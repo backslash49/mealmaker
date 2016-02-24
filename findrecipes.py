@@ -1,6 +1,7 @@
 import re
 import sys
 
+#unused program, testing capability of importing recipe list from txt file instead of api
 f = open('/users/lauren/downloads/recipes.txt')
 
 #recipes = re.findall(r'Title:\s*(.*)\r', f.read())

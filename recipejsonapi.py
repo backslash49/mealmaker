@@ -1,8 +1,6 @@
 import json, requests, pprint, urllib, urllib2, re, sys
 import save
 
-#command line input
-
 def searchrecipes():
     search = input('What are you searching for today?')
     #api url for SEARCHING
@@ -121,13 +119,16 @@ def removestuff(ingredients):
     ing = ing.replace('whole', '')
     ing = ing.replace('at room temperature', '')
     ing = ing.replace('grams', '')
+    ing = ing.replace('diced', '')
     ing = ing.replace('skinless', '')
     ing = ing.replace('  ', '')
     ing = ing.replace('()', '')
+    ing = ing.replace('room temperature', '')
+    ing = ing.replace('packed', '')
     split = ing.split('", "')
     return split
 
-#46980
+
 def get_title_strip_ingredients(x):
     a = getingredients(x) #get raw ingredients
     title = a[0]  #save title
@@ -150,6 +151,44 @@ def get_title_strip_ingredients(x):
     titleandingredients[title] = lowercaseingredients #adds title and ingred. to dict
     return titleandingredients      #returns title and list of ingredients
 
+
+def correct(x, file):
+    if x == 'Delete':
+        proceed = 'yes'
+        while proceed == 'yes':
+            deletingitem = input('Which Item do you want to Delete? ')
+            deletingitem = deletingitem - 1
+            print 'Ok, deleting the following item: '
+            print file[deletingitem]
+            checkb4delete = input('Are you sure you want to delete that? ')
+            if checkb4delete == 'yes':
+                file.pop(deletingitem)
+                proceed = input('Want to delete more items? ')
+        #correctingitem = input('Which Ingredient? ')
+        count = 1
+        for items in file:
+            print count, items
+            count = count + 1
+    if x == 'Edit':
+        proceed = 'yes'
+        while proceed == 'yes':
+            editingitem = input('Which Item do you want to Edit? ')
+            editingitem = editingitem - 1
+            print 'Ok, editing the following item: '
+            print file[editingitem]
+            editeditem = input('What are you changing the item to? ')
+            print 'Ok, editing from "', file[editingitem], '" to "', editeditem, '"'
+            checkb4edit = input('Are you sure you want to change this? ')
+            if checkb4edit == 'yes':
+                file[editingitem] = editeditem
+            proceed = input('Do you want to edit more items? ')
+            #correctingitem = input('Which Ingredient? ')
+        count = 1
+        for items in file:
+            print count, items
+            count = count + 1
+
+
 def main():
     listofrecipes = searchrecipes()
     returnedlist = {}
@@ -167,43 +206,27 @@ def main():
     for items in newrecipe[newrecipe.keys()[0]]:
         print count, items
         count = count + 1
-    yesorno1 = input('Want to make any corrections? ')
-    if yesorno1 == 'yes':
-        yesno2 = input('Edit or Delete? ')
-        if yesno2 == 'Delete':
-            deletingitem = input('Which Item do you want to Delete? ')
-            deletingitem = deletingitem - 1
-            print 'Ok, deleting the following item: '
-            print newrecipe[newrecipe.keys()[0]][deletingitem]
-            checkb4delete = input('Are you sure you want to delete that? ')
-            if checkb4delete == 'yes':
-                newrecipe[newrecipe.keys()[0]].pop(deletingitem)
-            #correctingitem = input('Which Ingredient? ')
-        count = 1
-        for items in newrecipe[newrecipe.keys()[0]]:
-            print count, items
-            count = count + 1
-        if yesno2 == 'Edit':
-            editingitem = input('Which Item do you want to Edit? ')
-            editingitem = editingitem - 1
-            print 'Ok, editing the following item: '
-            print newrecipe[newrecipe.keys()[0]][editingitem]
-            editeditem = input('What are you changing the item to? ')
-            print 'Ok, editing from "', newrecipe[newrecipe.keys()[0]][editingitem], '" to "', editeditem, '"'
-            checkb4edit = input('Are you sure you want to change this? ')
-            if checkb4edit == 'yes':
-                newrecipe[newrecipe.keys()[0]][editingitem] = editeditem
-            #correctingitem = input('Which Ingredient? ')
-        count = 1
-        for items in newrecipe[newrecipe.keys()[0]]:
-            print count, items
-            count = count + 1
-
-        ##
-
+    yesorno1 = input('Want to make any corrections? [1] YES [2] NO ')
+    if yesorno1 == 1:
+        editordelete = input('[1] EDIT [2] DELETE? [3] BOTH ')
+        if editordelete == 1:
+            correct('Edit', newrecipe[newrecipe.keys()[0]])
+        if editordelete == 2:
+            correct('Delete', newrecipe[newrecipe.keys()[0]])
+        if editordelete == 3:
+            correct('Edit', newrecipe[newrecipe.keys()[0]])
+            correct('Delete', newrecipe[newrecipe.keys()[0]])
     yesorno2 = input('Want to add this to your recipe book?')
     if yesorno2 == 'yes':
         save.memory(newrecipe.keys()[0], newrecipe[newrecipe.keys()[0]])
+
+
+
+
+
+        ##
+
+
     #asktosave = input('Save to Memory? )
     #if asktosave == 'yes'
     #    save.memory()

@@ -2,7 +2,7 @@ import csv
 import sys
 import re
 
-
+#simple function that opns a single row csv file and returns the contents as a list
 a = []
 
 def opencsv(filename):

@@ -8,117 +8,206 @@ p3
 S'butter'
 p4
 tp5
-sS'BLT'
+sS'Shrimp Tacos With Citrus Cabbage Slaw'
 p6
-(S'Bacon'
-p7
-S'Lettuce'
+(lp7
+S'sour cream'
 p8
-S'Tomatoe'
+aS'kosher salt and black pepper'
 p9
-tp10
-sS'Taco Seasoning I'
+aS'cabe ( )'
+p10
+aS'shredded'
 p11
-(lp12
-S'chili powder'
+aS'corn kernels (fromtoears'
+p12
+aS'or frozen and )'
 p13
-aS'garlic powder'
+aS'jalapeo'
 p14
-aS'onion powder'
+aS'seeded and'
 p15
-aS'crushed red pepper flakes'
-p16
-aS'dried oregano'
-p17
-aS'paprika'
-p18
-aS'ground cumin'
-p19
-aS'sea salt'
-p20
-aS'black pepper'
-p21
-asS'Cajun Chicken Pasta'
-p22
-(lp23
-S'boneless'
-p24
-aS'skinless chicken breasts'
-p25
-aS'cut into cubes'
-p26
-aS'cajun spice mix'
-p27
-aS'more to taste'
-p28
-aS'fettuccine'
-p29
 aS'olive oil'
+p16
+aS'peeled and deveined medium shrimp'
+p17
+asS'BLT'
+p18
+(S'Bacon'
+p19
+S'Lettuce'
+p20
+S'Tomatoe'
+p21
+tp22
+sS'Taco Seasoning I'
+p23
+(lp24
+S'chili powder'
+p25
+aS'garlic powder'
+p26
+aS'onion powder'
+p27
+aS'crushed red pepper flakes'
+p28
+aS'dried oregano'
+p29
+aS'paprika'
 p30
-aS's butter'
+aS'ground cumin'
 p31
-aS'green bell pepper'
+aS'sea salt'
 p32
-aS'seeded and sliced'
+aS'black pepper'
 p33
-aS'red bell pepper'
+asS'Cajun Chicken Pasta'
 p34
-aS'seeded and sliced'
-p35
-aS'large red onion'
+(lp35
+S'boneless'
 p36
-aS'sliced'
+aS'skinless chicken breasts'
 p37
-aS'cloves garlic'
+aS'cut into cubes'
 p38
-aS'minced'
+aS'cajun spice mix'
 p39
-aS'roma tomatoes'
+aS'more to taste'
 p40
-aS'diced'
+aS'fettuccine'
 p41
-aS'low sodium chicken broth'
+aS'olive oil'
 p42
-aS'white wine'
+aS's butter'
 p43
-aS'heavy cream'
+aS'green bell pepper'
 p44
-aS'cayenne pepper to taste'
+aS'seeded and sliced'
 p45
-aS'freshly ground black pepper'
+aS'red bell pepper'
 p46
-aS'to taste'
+aS'seeded and sliced'
 p47
-aS'salt to taste'
+aS'large red onion'
 p48
-aS'chopped fresh parsley'
+aS'sliced'
 p49
-aS'to taste'
+aS'cloves garlic'
 p50
-asS'PB&J'
+aS'minced'
 p51
-(S'peanut-butter'
+aS'roma tomatoes'
 p52
-S'jelly'
+aS'diced'
 p53
-S'bread'
+aS'low sodium chicken broth'
 p54
-tp55
-sS'Easy Sugar Cookies'
+aS'white wine'
+p55
+aS'heavy cream'
 p56
-(lp57
-S'allpurpose flour'
+aS'cayenne pepper to taste'
+p57
+aS'freshly ground black pepper'
 p58
-aS'baking soda'
+aS'to taste'
 p59
-aS'baking powder'
+aS'salt to taste'
 p60
-aS'butter'
+aS'chopped fresh parsley'
 p61
-aS'white sugar'
+aS'to taste'
 p62
-aS'egg'
+asS'intensely chocolate sables'
 p63
+(lp64
+S'( ) dutched cocoa powder (see updated note)'
+p65
+aS'baking soda'
+p66
+aS'or) unsalted butter'
+p67
+aS'to ( to) granulated sugar (less for a more bittersweet cookie)'
+p68
+aS'fine sea salt'
+p69
+aS'egg yolk'
+p70
 aS'vanilla extract'
-p64
+p71
+aS'( ) semi or bittersweet chocolate'
+p72
+aS'grated or finelyuntil almost powdery in a food processor'
+p73
+aS'coarse sugar (turbinatosugar in the raw or decorative) for sprinkling'
+p74
+asS'Lofthouse Style Soft Sugar Cookies'
+p75
+(lp76
+S'for the cookies:'
+p77
+aS'allpurpose flour'
+p78
+aS'baking soda'
+p79
+aS'baking powder'
+p80
+aS'salt'
+p81
+aS'unsalted butter'
+p82
+aS'granulated sugar'
+p83
+aS'eggs'
+p84
+aS'vanilla extract'
+p85
+aS'sour cream'
+p86
+aS'for the buttercream frosting:'
+p87
+aS'unsalted butter'
+p88
+aS'vanilla extract'
+p89
+aS'powdered sugar'
+p90
+aS'pinch of salt'
+p91
+aS'heavy cream'
+p92
+aS'food coloring'
+p93
+aS'optional'
+p94
+aS'sprinkles'
+p95
+aS'optional'
+p96
+asS'PB&J'
+p97
+(S'peanut-butter'
+p98
+S'jelly'
+p99
+S'bread'
+p100
+tp101
+sS'Easy Sugar Cookies'
+p102
+(lp103
+S'allpurpose flour'
+p104
+aS'baking soda'
+p105
+aS'baking powder'
+p106
+aS'butter'
+p107
+aS'white sugar'
+p108
+aS'egg'
+p109
+aS'vanilla extract'
+p110
 as.
