@@ -1,0 +1,15 @@
+create functions wherever possible
+annotate
+use lowercase matching for removestuff function
+make Edit/Delete loop until finished with entire modification
+write readme
+figure out how to exclude pyc files in upload
+make ingredients list, which is online through google docs, access via api vs download
+
+
+
+
+low priority
+figure out how to not break at , within list return
+consider storing in xml or json instead of python DICT in TXT file with pickle
+create self learning system that adjusts removestuff() function based on the difference between the original item and the final item)

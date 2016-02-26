@@ -1,5 +1,7 @@
 import json, requests, pprint, urllib, urllib2, re, sys
-import save
+import saverecipe
+import saveremovelist
+import pickle
 
 def searchrecipes():
     search = input('What are you searching for today?')
@@ -36,103 +38,26 @@ def getingredients(selection):
     title = title.replace('"', '')
     return title, ingredients
 
-def removestuff(ingredients):
-    ing = json.dumps(ingredients)
-    ing = ing.replace('teaspoons', '')
-    ing = ing.replace('teaspoon', '')
-    ing = ing.replace('5g', '')
-    ing = ing.replace('0g', '')
-    ing = ing.replace('1/2', '')
-    ing = ing.replace('0', '')
-    ing = ing.replace('00', '')
-    ing = ing.replace('1', '')
-    ing = ing.replace('2', '')
-    ing = ing.replace('3', '')
-    ing = ing.replace('4', '')
-    ing = ing.replace('5', '')
-    ing = ing.replace('6', '')
-    ing = ing.replace('7', '')
-    ing = ing.replace('8', '')
-    ing = ing.replace('9', '')
-    ing = ing.replace('small', '')
-    ing = ing.replace('slices', '')
-    ing = ing.replace('cp', '')
-    ing = ing.replace('diced', '')
-    ing = ing.replace('cups', '')
-    ing = ing.replace('cup', '')
-    ing = ing.replace('tablespoons', '')
-    ing = ing.replace('tablespoon', '')
-    ing = ing.replace('Tbsps', '')
-    ing = ing.replace('Tsps', '')
-    ing = ing.replace('tbsps', '')
-    ing = ing.replace('tsp', '')
-    ing = ing.replace('tbsp', '')
-    ing = ing.replace('tsp', '')
-    ing = ing.replace('0g', '')
-    ing = ing.replace('00g', '')
-    ing = ing.replace('&nbsp', '')
-    ing = ing.replace('\\n', '')
-    ing = ing.replace('/', '')
-    ing = ing.replace('pound', '')
-    ing = ing.replace('to taste', '')
-    ing = ing.replace('ounces', '')
-    ing = ing.replace(' ounce', '')
-    ing = ing.replace(' oz', '')
-    ing = ing.replace(' ml', '')
-    ing = ing.replace('can', '')
-    ing = ing.replace('melted', '')
-    ing = ing.replace('thawed', '')
-    ing = ing.replace('quart', '')
-    ing = ing.replace('bag', '')
-    ing = ing.replace('Halved', '')
-    ing = ing.replace('Tablespoon', '')
-    ing = ing.replace('Tablespoons', '')
-    ing = ing.replace('for garnish (optional)', '')
-    ing = ing.replace('[', '')
-    ing = ing.replace(']', '')
-    ing = ing.replace('"', '')
-    ing = ing.replace(', softened', '')
-    ing = ing.replace('shreaded', '')
-    ing = ing.replace('sliced', '')
-    ing = ing.replace('drained', '')
-    ing = ing.replace('whole wheat', '')
-    ing = ing.replace('thinly', '')
-    ing = ing.replace('chopped', '')
-    ing = ing.replace('blanched', '')
-    ing = ing.replace('cooked', '')
-    ing = ing.replace('tolb', '')
-    ing = ing.replace('cut into thin strips', '')
-    ing = ing.replace('&amp', '')
-    ing = ing.replace('pinch', '')
-    ing = ing.replace('plain', '')
-    ing = ing.replace('ml', '')
-    ing = ing.replace('-', '')
-    ing = ing.replace('minced', '')
-    ing = ing.replace('plus extra for frying', '')
-    ing = ing.replace('package', '')
-    ing = ing.replace('each', '')
-    ing = ing.replace('cut into', '')
-    ing = ing.replace('large', '')
-    ing = ing.replace('about', '')
-    ing = ing.replace('stick', '')
-    ing = ing.replace('divided', '')
-    ing = ing.replace('whole', '')
-    ing = ing.replace('at room temperature', '')
-    ing = ing.replace('grams', '')
-    ing = ing.replace('diced', '')
-    ing = ing.replace('skinless', '')
-    ing = ing.replace('  ', '')
-    ing = ing.replace('()', '')
-    ing = ing.replace('room temperature', '')
-    ing = ing.replace('packed', '')
-    split = ing.split('", "')
-    return split
-
+#curently taking remove list from command line.
+#removelist = ['teaspoons', 'teaspoon', '5g', '0g', '1', '0', '00', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'small', 'slices', 'cp', 'diced', 'cups', 'cup', 'tablespoons', 'tablespoon', 'Tbsps', 'Tsps', 'tbsps', 'tsp', 'tbsp', 'tsp', '0g', '00g', 'pound', 'to', 'ounces', 'can', 'melted', 'thawed', 'quart', 'bag', 'Halved', 'Tablespoon', 'Tablespoons', 'for', 'shreaded', 'sliced', 'drained', 'whole', 'thinly', 'chopped', 'blanched', 'cooked', 'tolb', 'cut', 'pinch', 'plain', 'ml', 'minced', 'plus', 'package', 'each', 'cut', 'large', 'about', 'stick', 'divided', 'whole', 'at', 'grams', 'diced', 'skinless', 'room', 'packed']
+def removestuff(removelist, ings):
+    ingredients = json.dumps(ings)
+    ingredientlist = []
+    remove = '|'.join(removelist)
+    regex = re.compile(r'\b('+remove+r')\b', flags=re.IGNORECASE)
+    out = []
+    for items in ings:
+        out.append(str(regex.sub('', items)))
+    stripped = []
+    for items in out:
+        stripped.append(items.strip())
+    return stripped
 
 def get_title_strip_ingredients(x):
     a = getingredients(x) #get raw ingredients
     title = a[0]  #save title
-    onlyingredients = removestuff(a[1]) #remove crap from ingredients
+    removelist = saveremovelist.open_remove_list_memory()
+    onlyingredients = removestuff(removelist, a[1]) #remove crap from ingredients
     string = str(onlyingredients)
     string = string.replace(']', '')
     string = string.replace('[', '')
@@ -151,6 +76,15 @@ def get_title_strip_ingredients(x):
     titleandingredients[title] = lowercaseingredients #adds title and ingred. to dict
     return titleandingredients      #returns title and list of ingredients
 
+
+def diff(edited, original):
+    d = []
+    c = re.findall('(.*)' + edited + '(.*)', original)
+    for items in c[0]:
+        if items != '':
+            a = items.strip()
+            d.append(a)
+    return d
 
 def correct(x, file):
     if x == 'Delete':
@@ -171,6 +105,12 @@ def correct(x, file):
             count = count + 1
     if x == 'Edit':
         proceed = 'yes'
+        removelist = saveremovelist.open_remove_list_memory()
+        addtoremovelist = []
+        count = 1
+        for items in file:
+            print count, items
+            count = count + 1
         while proceed == 'yes':
             editingitem = input('Which Item do you want to Edit? ')
             editingitem = editingitem - 1
@@ -178,6 +118,14 @@ def correct(x, file):
             print file[editingitem]
             editeditem = input('What are you changing the item to? ')
             print 'Ok, editing from "', file[editingitem], '" to "', editeditem, '"'
+            checkifaddtomemory = input('Do you want to add this edit to your removelist? :')
+            if checkifaddtomemory == 'yes':
+                payload = diff(editeditem, file[editingitem])
+                addtoremovelist.append(payload)
+                for items in addtoremovelist:
+                    if items not in removelist:
+                        saveremovelist.add_to_remove_list_memory(items)
+                        addtoremovelist = []
             checkb4edit = input('Are you sure you want to change this? ')
             if checkb4edit == 'yes':
                 file[editingitem] = editeditem
@@ -187,7 +135,9 @@ def correct(x, file):
         for items in file:
             print count, items
             count = count + 1
-
+    print('Items saved into removelist')
+    for items in addtoremovelist:
+        print items
 
 def main():
     listofrecipes = searchrecipes()
@@ -206,9 +156,9 @@ def main():
     for items in newrecipe[newrecipe.keys()[0]]:
         print count, items
         count = count + 1
-    yesorno1 = input('Want to make any corrections? [1] YES [2] NO ')
+    yesorno1 = input('Want to make any corrections? [1] YES  [2] NO ')
     if yesorno1 == 1:
-        editordelete = input('[1] EDIT [2] DELETE? [3] BOTH ')
+        editordelete = input('[1] EDIT  [2] DELETE?  [3] BOTH ')
         if editordelete == 1:
             correct('Edit', newrecipe[newrecipe.keys()[0]])
         if editordelete == 2:
@@ -216,10 +166,11 @@ def main():
         if editordelete == 3:
             correct('Edit', newrecipe[newrecipe.keys()[0]])
             correct('Delete', newrecipe[newrecipe.keys()[0]])
-    yesorno2 = input('Want to add this to your recipe book?')
-    if yesorno2 == 'yes':
-        save.memory(newrecipe.keys()[0], newrecipe[newrecipe.keys()[0]])
-
+    yesorno2 = input('Want to add this to your recipe book? [1] YES  [2] NO ')
+    if yesorno2 == 1:
+        saverecipe.memory(newrecipe.keys()[0], newrecipe[newrecipe.keys()[0]])
+    if yesorno2 == 2:
+        print 'Ok, exiting now.'
 
 
 

@@ -55,6 +55,8 @@ print 'You have most of what you need for'
 for items in havemost:
     print '  ', items
 
-yesorno = input("Do you want to search for new recipes?")
-if yesorno == 'yes':
+yesorno = input("Do you want to search for new recipes? [1] YES  [2] NO")
+if yesorno == 1:
     recipejsonapi.main()
+if yesorno == 2:
+    print 'Ok, exiting now.'
