@@ -31,183 +31,206 @@ aS'olive oil'
 p16
 aS'peeled and deveined medium shrimp'
 p17
-asS'BLT'
+asS'Buffalo Chicken Grilled Cheese Sandwich'
 p18
-(S'Bacon'
-p19
-S'Lettuce'
+(lp19
+S'chicken'
 p20
-S'Tomatoe'
+aS'hot sauce'
 p21
-tp22
-sS'Taco Seasoning I'
+aS'mayo'
+p22
+aS'carrot'
 p23
-(lp24
-S'chili powder'
+aS'celery'
+p24
+aS'onion'
 p25
-aS'garlic powder'
+aS'blue cheese'
 p26
-aS'onion powder'
+aS'cheddar cheese'
 p27
-aS'crushed red pepper flakes'
+aS'bread'
 p28
-aS'dried oregano'
+aS'butter'
 p29
-aS'paprika'
+asS'BLT'
 p30
-aS'ground cumin'
+(S'Bacon'
 p31
-aS'sea salt'
+S'Lettuce'
 p32
-aS'black pepper'
+S'Tomatoe'
 p33
-asS'Cajun Chicken Pasta'
-p34
-(lp35
-S'boneless'
-p36
-aS'skinless chicken breasts'
+tp34
+sS'Taco Seasoning I'
+p35
+(lp36
+S'chili powder'
 p37
-aS'cut into cubes'
+aS'garlic powder'
 p38
-aS'cajun spice mix'
+aS'onion powder'
 p39
-aS'more to taste'
+aS'crushed red pepper flakes'
 p40
-aS'fettuccine'
+aS'dried oregano'
 p41
-aS'olive oil'
+aS'paprika'
 p42
-aS's butter'
+aS'ground cumin'
 p43
-aS'green bell pepper'
+aS'sea salt'
 p44
-aS'seeded and sliced'
+aS'black pepper'
 p45
-aS'red bell pepper'
+asS'Cajun Chicken Pasta'
 p46
-aS'seeded and sliced'
-p47
-aS'large red onion'
+(lp47
+S'boneless'
 p48
-aS'sliced'
+aS'skinless chicken breasts'
 p49
-aS'cloves garlic'
+aS'cut into cubes'
 p50
-aS'minced'
+aS'cajun spice mix'
 p51
-aS'roma tomatoes'
+aS'more to taste'
 p52
-aS'diced'
+aS'fettuccine'
 p53
-aS'low sodium chicken broth'
+aS'olive oil'
 p54
-aS'white wine'
+aS's butter'
 p55
-aS'heavy cream'
+aS'green bell pepper'
 p56
-aS'cayenne pepper to taste'
+aS'seeded and sliced'
 p57
-aS'freshly ground black pepper'
+aS'red bell pepper'
 p58
-aS'to taste'
+aS'seeded and sliced'
 p59
-aS'salt to taste'
+aS'large red onion'
 p60
-aS'chopped fresh parsley'
+aS'sliced'
 p61
-aS'to taste'
+aS'cloves garlic'
 p62
-asS'intensely chocolate sables'
+aS'minced'
 p63
-(lp64
-S'( ) dutched cocoa powder (see updated note)'
+aS'roma tomatoes'
+p64
+aS'diced'
 p65
-aS'baking soda'
+aS'low sodium chicken broth'
 p66
-aS'or) unsalted butter'
+aS'white wine'
 p67
-aS'to ( to) granulated sugar (less for a more bittersweet cookie)'
+aS'heavy cream'
 p68
-aS'fine sea salt'
+aS'cayenne pepper to taste'
 p69
-aS'egg yolk'
+aS'freshly ground black pepper'
 p70
-aS'vanilla extract'
+aS'to taste'
 p71
-aS'( ) semi or bittersweet chocolate'
+aS'salt to taste'
 p72
-aS'grated or finelyuntil almost powdery in a food processor'
+aS'chopped fresh parsley'
 p73
-aS'coarse sugar (turbinatosugar in the raw or decorative) for sprinkling'
+aS'to taste'
 p74
-asS'Lofthouse Style Soft Sugar Cookies'
+asS'intensely chocolate sables'
 p75
 (lp76
-S'for the cookies:'
+S'( ) dutched cocoa powder (see updated note)'
 p77
-aS'allpurpose flour'
+aS'baking soda'
 p78
-aS'baking soda'
+aS'or) unsalted butter'
 p79
-aS'baking powder'
+aS'to ( to) granulated sugar (less for a more bittersweet cookie)'
 p80
-aS'salt'
+aS'fine sea salt'
 p81
-aS'unsalted butter'
+aS'egg yolk'
 p82
-aS'granulated sugar'
+aS'vanilla extract'
 p83
-aS'eggs'
+aS'( ) semi or bittersweet chocolate'
 p84
-aS'vanilla extract'
+aS'grated or finelyuntil almost powdery in a food processor'
 p85
-aS'sour cream'
+aS'coarse sugar (turbinatosugar in the raw or decorative) for sprinkling'
 p86
-aS'for the buttercream frosting:'
+asS'Lofthouse Style Soft Sugar Cookies'
 p87
-aS'unsalted butter'
-p88
-aS'vanilla extract'
+(lp88
+S'for the cookies:'
 p89
-aS'powdered sugar'
+aS'allpurpose flour'
 p90
-aS'pinch of salt'
-p91
-aS'heavy cream'
-p92
-aS'food coloring'
-p93
-aS'optional'
-p94
-aS'sprinkles'
-p95
-aS'optional'
-p96
-asS'PB&J'
-p97
-(S'peanut-butter'
-p98
-S'jelly'
-p99
-S'bread'
-p100
-tp101
-sS'Easy Sugar Cookies'
-p102
-(lp103
-S'allpurpose flour'
-p104
 aS'baking soda'
-p105
+p91
 aS'baking powder'
-p106
-aS'butter'
-p107
-aS'white sugar'
-p108
-aS'egg'
-p109
+p92
+aS'salt'
+p93
+aS'unsalted butter'
+p94
+aS'granulated sugar'
+p95
+aS'eggs'
+p96
 aS'vanilla extract'
+p97
+aS'sour cream'
+p98
+aS'for the buttercream frosting:'
+p99
+aS'unsalted butter'
+p100
+aS'vanilla extract'
+p101
+aS'powdered sugar'
+p102
+aS'pinch of salt'
+p103
+aS'heavy cream'
+p104
+aS'food coloring'
+p105
+aS'optional'
+p106
+aS'sprinkles'
+p107
+aS'optional'
+p108
+asS'PB&J'
+p109
+(S'peanut-butter'
 p110
+S'jelly'
+p111
+S'bread'
+p112
+tp113
+sS'Easy Sugar Cookies'
+p114
+(lp115
+S'allpurpose flour'
+p116
+aS'baking soda'
+p117
+aS'baking powder'
+p118
+aS'butter'
+p119
+aS'white sugar'
+p120
+aS'egg'
+p121
+aS'vanilla extract'
+p122
 as.

@@ -20,7 +20,5 @@ def memory(newtitle, newrecipe):
 def openrecipefile():
     output=open('recipememory.txt', 'rb')
     obj_dict = pickle.load(output)
-    print "Recipes Currently Loaded"
-    pprint.pprint(obj_dict)
     return obj_dict
     output.close()

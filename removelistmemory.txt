@@ -193,6 +193,40 @@ aS'taste'
 p93
 aS'thick'
 p94
-aS'\(\)'
+aS'\\(\\)'
 p95
+aS'loaf'
+p96
+aS'salted'
+p97
+aS'cloves'
+p98
+aS'12 oz. fresh'
+p99
+aS'fresh'
+p100
+aS'all-purpose gold medal'
+p101
+aS'100g'
+p102
+aS'300ml semi-skimmed'
+p103
+aS'shredded'
+p104
+aS'blah'
+p105
+aS'green or red'
+p106
+aS'green or red'
+p107
+aS'blah'
+p108
+aS'green or red'
+p109
+aS'(see below)'
+p110
+aS'in adobo sauce or'
+p111
+aS'(or a few dashes red chile oil)'
+p112
 a.

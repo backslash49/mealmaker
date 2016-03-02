@@ -1,13 +1,14 @@
 import re
 import sys
 import openascsv
-import save
+import saverecipe
+import saveremovelist
 import recipejsonapi
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 
 #open recipes from memory as python DICT and save DICT to new variable recipes
-recipes = save.openrecipefile()
+recipes = saverecipe.openrecipefile()
 
 # display recipes from memory, printing only the title of recipe
 print 'Recipes Loaded into System'

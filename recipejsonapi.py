@@ -90,6 +90,7 @@ def correct(x, file):
     if x == 'Delete':
         proceed = 'yes'
         while proceed == 'yes':
+            count = 1
             deletingitem = input('Which Item do you want to Delete? ')
             deletingitem = deletingitem - 1
             print 'Ok, deleting the following item: '
@@ -97,6 +98,9 @@ def correct(x, file):
             checkb4delete = input('Are you sure you want to delete that? ')
             if checkb4delete == 'yes':
                 file.pop(deletingitem)
+                for items in file:
+                    print count, items
+                    count = count + 1
                 proceed = input('Want to delete more items? ')
         #correctingitem = input('Which Ingredient? ')
         count = 1
@@ -129,15 +133,16 @@ def correct(x, file):
             checkb4edit = input('Are you sure you want to change this? ')
             if checkb4edit == 'yes':
                 file[editingitem] = editeditem
+            count = 1
+            for items in file:
+                print count, items
+                count = count + 1
             proceed = input('Do you want to edit more items? ')
             #correctingitem = input('Which Ingredient? ')
         count = 1
         for items in file:
             print count, items
             count = count + 1
-    print('Items saved into removelist')
-    for items in addtoremovelist:
-        print items
 
 def main():
     listofrecipes = searchrecipes()
